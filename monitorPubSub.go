@@ -20,7 +20,7 @@ import (
 //   - meta: Configuration containing the namespace and metric settings.
 //     Set individual metric configs to nil to disable them.
 //
-// Returns a PSMetrics instance for logging pub/sub messaging metrics.
+// Returns a PSMetricsInterface instance for logging pub/sub messaging metrics.
 //
 // Example:
 //
@@ -37,7 +37,7 @@ import (
 //	        Buckets: monitoring.GetExponentialBuckets(10, 2, 10),
 //	    },
 //	})
-func NewPubSubMetrics(meta *PSMetricsMeta) *PSMetrics {
+func NewPubSubMetrics(meta *PSMetricsMeta) PSMetricsInterface {
 	var totalMessagesConsumed, totalMessagesPublished *prometheus.CounterVec
 	var messagesPublishedLatencyMillis, messagesPublishedSizeBytes *prometheus.HistogramVec
 	if meta.TotalMessagesConsumed != nil {

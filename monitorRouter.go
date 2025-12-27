@@ -22,7 +22,7 @@ import (
 //   - meta: Configuration containing the namespace and metric settings.
 //     Set individual metric configs to nil to disable them.
 //
-// Returns a RouterMetrics instance for logging HTTP endpoint metrics.
+// Returns a RouterMetricsInterface instance for logging HTTP endpoint metrics.
 //
 // Example:
 //
@@ -36,7 +36,7 @@ import (
 //	        Buckets: monitoring.GetExponentialBuckets(10, 2, 10),
 //	    },
 //	})
-func NewRouterLevelMetrics(meta *RouterMetricsMeta) *RouterMetrics {
+func NewRouterLevelMetrics(meta *RouterMetricsMeta) RouterMetricsInterface {
 	var httpRequests *prometheus.CounterVec
 	var httpRequestsLatencyMillis, httpRequestSizeBytes, httpResponseSizeBytes *prometheus.HistogramVec
 

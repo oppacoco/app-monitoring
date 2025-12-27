@@ -18,7 +18,7 @@ import (
 //   - meta: Configuration containing the namespace and metric settings.
 //     Set individual metric configs to nil to disable them.
 //
-// Returns a CronJobMetrics instance that can be used to log job execution metrics.
+// Returns a CronJobMetricsInterface instance that can be used to log job execution metrics.
 //
 // Example:
 //
@@ -32,7 +32,7 @@ import (
 //	        Buckets: monitoring.GetExponentialBuckets(100, 2, 10),
 //	    },
 //	})
-func NewCronJobMetrics(meta *CronJobMetricsMeta) *CronJobMetrics {
+func NewCronJobMetrics(meta *CronJobMetricsMeta) CronJobMetricsInterface {
 	var jobExecutionTotal *prometheus.CounterVec
 	var jobExecutionLatencyMillis *prometheus.HistogramVec
 

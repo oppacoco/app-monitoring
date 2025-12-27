@@ -11,22 +11,24 @@
 package main
 
 import (
+	"net/http"
+	"time"
+
 	"github.com/gin-gonic/gin"
 	ae "github.com/piyushkumar96/app-error"
 	appMnt "github.com/piyushkumar96/app-monitoring"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
-	"net/http"
-	"time"
 )
 
 // Global metric instances - typically initialized once at application startup
+// Using interfaces allows for easy mocking in tests and swapping implementations
 var (
-	routerMetrics     *appMnt.RouterMetrics
-	dbMetrics         *appMnt.DBMetrics
-	downstreamMetrics *appMnt.DownstreamServiceMetrics
-	cronMetrics       *appMnt.CronJobMetrics
-	pubsubMetrics     *appMnt.PSMetrics
-	appMetrics        *appMnt.AppMetrics
+	routerMetrics     appMnt.RouterMetricsInterface
+	dbMetrics         appMnt.DBMetricsInterface
+	downstreamMetrics appMnt.DownstreamServiceMetricsInterface
+	cronMetrics       appMnt.CronJobMetricsInterface
+	pubsubMetrics     appMnt.PSMetricsInterface
+	appMetrics        appMnt.AppMetricsInterface
 )
 
 func main() {

@@ -225,6 +225,57 @@ appMetrics.LogMetrics([]string{"ERR_DB_CONNECTION", "ERR_VALIDATION"})
 appMetrics.DecrementAppErrorCount("ERR_DB_CONNECTION")
 ```
 
+## Interface-Based Architecture
+
+All metric types are defined as interfaces, enabling:
+- **Easy mocking** for unit tests
+- **Dependency injection** in your application
+- **Swappable implementations** (e.g., NoOp for testing)
+
+### Using Interfaces
+
+```go
+// Declare metrics using interfaces
+var (
+    routerMetrics     monitoring.RouterMetricsInterface
+    dbMetrics         monitoring.DBMetricsInterface
+    downstreamMetrics monitoring.DownstreamServiceMetricsInterface
+    cronMetrics       monitoring.CronJobMetricsInterface
+    pubsubMetrics     monitoring.PSMetricsInterface
+    appMetrics        monitoring.AppMetricsInterface
+)
+
+// Initialize with real implementations
+routerMetrics = monitoring.NewRouterLevelMetrics(&monitoring.RouterMetricsMeta{...})
+
+// Or use NoOp implementations for testing
+routerMetrics = monitoring.NewNoOpRouterMetrics()
+```
+
+### Available Interfaces
+
+| Interface | Constructor | NoOp Constructor |
+|-----------|-------------|------------------|
+| `RouterMetricsInterface` | `NewRouterLevelMetrics()` | `NewNoOpRouterMetrics()` |
+| `DBMetricsInterface` | `NewDatabaseMetrics()` | `NewNoOpDBMetrics()` |
+| `DownstreamServiceMetricsInterface` | `NewDownstreamServiceMetrics()` | `NewNoOpDownstreamServiceMetrics()` |
+| `CronJobMetricsInterface` | `NewCronJobMetrics()` | `NewNoOpCronJobMetrics()` |
+| `PSMetricsInterface` | `NewPubSubMetrics()` | `NewNoOpPSMetrics()` |
+| `AppMetricsInterface` | `NewAppMetrics()` | `NewNoOpAppMetrics()` |
+
+### Testing with NoOp Implementations
+
+```go
+func TestUserHandler(t *testing.T) {
+    // Use NoOp metrics for testing - no actual Prometheus metrics recorded
+    dbMetrics := monitoring.NewNoOpDBMetrics()
+    appMetrics := monitoring.NewNoOpAppMetrics()
+    
+    handler := NewUserHandler(dbMetrics, appMetrics)
+    // ... test your handler
+}
+```
+
 ## Configuration Options
 
 ### Metric Labels

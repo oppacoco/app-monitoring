@@ -19,7 +19,7 @@ import (
 //   - meta: Configuration containing the namespace and metric settings.
 //     Set individual metric configs to nil to disable them.
 //
-// Returns a DownstreamServiceMetrics instance for logging downstream call metrics.
+// Returns a DownstreamServiceMetricsInterface instance for logging downstream call metrics.
 //
 // Example:
 //
@@ -33,7 +33,7 @@ import (
 //	        Buckets: monitoring.GetExponentialBuckets(10, 2, 10),
 //	    },
 //	})
-func NewDownstreamServiceMetrics(meta *DownstreamServiceMetricsMeta) *DownstreamServiceMetrics {
+func NewDownstreamServiceMetrics(meta *DownstreamServiceMetricsMeta) DownstreamServiceMetricsInterface {
 	var httpRequests *prometheus.CounterVec
 	var httpRequestsLatencyMillis, httpRequestSizeBytes, httpResponseSizeBytes *prometheus.HistogramVec
 

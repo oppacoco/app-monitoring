@@ -18,7 +18,7 @@ import (
 //   - meta: Configuration containing the namespace and metric settings.
 //     Set individual metric configs to nil to disable them.
 //
-// Returns a DBMetrics instance that can be used to log database operation metrics.
+// Returns a DBMetricsInterface instance that can be used to log database operation metrics.
 //
 // Example:
 //
@@ -32,7 +32,7 @@ import (
 //	        Buckets: monitoring.GetExponentialBuckets(1, 2, 12),
 //	    },
 //	})
-func NewDatabaseMetrics(meta *DBMetricsMeta) *DBMetrics {
+func NewDatabaseMetrics(meta *DBMetricsMeta) DBMetricsInterface {
 	var operationsTotal *prometheus.CounterVec
 	var operationsLatencyMillis *prometheus.HistogramVec
 

@@ -12,7 +12,7 @@ import "github.com/prometheus/client_golang/prometheus"
 //   - meta: Configuration containing the namespace and metric settings.
 //     Set ApplicationErrorsCounter to nil to disable error tracking.
 //
-// Returns an AppMetrics instance that can be used to log and query error metrics.
+// Returns an AppMetricsInterface instance that can be used to log and query error metrics.
 //
 // Example:
 //
@@ -22,7 +22,7 @@ import "github.com/prometheus/client_golang/prometheus"
 //	        Labels: []string{"error_code"},
 //	    },
 //	})
-func NewAppMetrics(meta *AppMetricsMeta) *AppMetrics {
+func NewAppMetrics(meta *AppMetricsMeta) AppMetricsInterface {
 	var appErrorsCounter *prometheus.GaugeVec
 	if meta.ApplicationErrorsCounter != nil {
 		appErrorsCounter = GetGaugeVec(meta.Namespace, "application_errors_total", "Tracks the counts of app errors at application level", meta.ApplicationErrorsCounter.Labels)
